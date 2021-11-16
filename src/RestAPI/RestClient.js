@@ -1,6 +1,6 @@
 import axios from "axios"
 
-class RestClient extends Component {
+class RestClient {
    
     static GetRequest = (getUrl)=>{
         return axios.get(getUrl).then(response=>{
