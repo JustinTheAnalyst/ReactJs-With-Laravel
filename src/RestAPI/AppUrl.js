@@ -10,7 +10,7 @@ class AppUrl {
 
     static ProjectDetails = this.BaseURL+'/projectdetails';
     static ProjectAll = this.BaseURL+'/projects';
-    static ProjectHome = this.BaseURL+'/projecthome';
+    static ProjectHome = this.BaseURL+'/recent3rojects';
 
     static Services = this.BaseURL+'/services';
 

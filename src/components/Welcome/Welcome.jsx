@@ -46,25 +46,25 @@ class Welcome extends Component {
                                             {/* Intro Footer Start */}
                                             <Row className="intro-footer bg-base text-center mt-5">
                                             <Col lg={4} md={6} sm={12}>
-                                                <Row>
+                                                <Row className="mb-3">
                                                     <Col lg={6} md={6} sm={12}>
                                                         <img className="sideImg" src={imgOne} />
                                                     </Col>
                                                     <Col lg={6} md={6} sm={12}>
-                                                        <h5 className="homeIntro">Ecommerce</h5>
-                                                        <p className="serviceDscription text-justify">Lorem ipsum dolor</p>
+                                                        <h5 className="homeIntro text-center">Ecommerce</h5>
+                                                        <p className="serviceDscription text-center">Lorem ipsum dolor</p>
                                                     </Col>
                                                 </Row>
                                             </Col>
 
                                             <Col lg={4} md={6} sm={12}>
-                                                <Row>
+                                                <Row className="mb-3">
                                                     <Col lg={6} md={6} sm={12}>
                                                         <img className="sideImg" src={imgTwo} />
                                                     </Col>
                                                     <Col lg={6} md={6} sm={12}>
-                                                        <h5 className="homeIntro">Development</h5>
-                                                        <p className="serviceDscription text-justify">Lorem ipsum dolor</p>
+                                                        <h5 className="homeIntro text-center">Development</h5>
+                                                        <p className="serviceDscription text-center">Lorem ipsum dolor</p>
                                                     </Col>
                                                 </Row>
                                             </Col>
@@ -75,8 +75,8 @@ class Welcome extends Component {
                                                         <img className="sideImg" src={imgThree} />
                                                     </Col>
                                                     <Col lg={6} md={6} sm={12}>
-                                                        <h5 className="homeIntro">Web Design</h5>
-                                                        <p className="serviceDscription text-justify">Lorem ipsum dolor</p>
+                                                        <h5 className="homeIntro text-center">Web Design</h5>
+                                                        <p className="serviceDscription text-center">Lorem ipsum dolor</p>
                                                     </Col>
                                                 </Row>
                                             </Col>
