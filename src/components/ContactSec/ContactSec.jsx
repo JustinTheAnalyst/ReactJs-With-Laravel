@@ -4,8 +4,30 @@ import { Fragment } from 'react'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons'
 import {faPhone} from '@fortawesome/free-solid-svg-icons'
+import RestClient from '../../RestAPI/RestClient';
+import AppUrl from '../../RestAPI/AppUrl';
 
 class ContactSec extends Component {
+
+    constructor(){
+        super();
+        this.state = {
+            address:'...',
+            email:'...',
+            phone:'...'
+        }
+    }
+
+    componentDidMount(){
+        RestClient.GetRequest(AppUrl.FooterData).then(results=>{
+            this.setState({
+                address: results[0]['address'],
+                email: results[0]['email'],
+                phone: results[0]['phone']
+            })
+        })
+    }
+
     render() {
         return (
             <Fragment>
@@ -36,11 +58,11 @@ class ContactSec extends Component {
                         </Col>
 
                         <Col lg={6} md={6} sm={12}>
-                            <h1>Discuss Now</h1>
+                            <h1>Discuss with Us</h1>
                             <p className="serviceDescription">
-                                47A Galloway Street, Hamilton East, Hamilton 3216, NZ<br></br>
-                                <FontAwesomeIcon icon={faEnvelope} /> Email : justin.tys@hotmail.com<br></br>
-                                <FontAwesomeIcon icon={faPhone} /> Phone : +64 20 4134 6305<br></br>
+                                {this.state.address}<br></br>
+                                <FontAwesomeIcon icon={faEnvelope} /> Email : {this.state.email}<br></br>
+                                <FontAwesomeIcon icon={faPhone} /> Phone : {this.state.phone}<br></br>
 
                             </p>
                         </Col>

@@ -7,8 +7,38 @@ import {faTwitter} from '@fortawesome/free-brands-svg-icons'
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons'
 import {faPhone} from '@fortawesome/free-solid-svg-icons'
 import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
+import RestClient from '../../RestAPI/RestClient';
+import AppUrl from '../../RestAPI/AppUrl';
 
 class Footer extends Component {
+
+    constructor(){
+        super();
+        this.state = {
+            address:'...',
+            email:'...',
+            phone:'...',
+            facebook:'...',
+            twitter:'...',
+            youtube:'...',
+            footercredit:'...'
+        }
+    }
+
+    componentDidMount(){
+        RestClient.GetRequest(AppUrl.FooterData).then(result=>{
+            this.setState({
+                address:result[0]['address'],
+                email:result[0]['email'],
+                phone:result[0]['phone'],
+                facebook:result[0]['facebook'],
+                twitter:result[0]['twitter'],
+                youtube:result[0]['youtube'],
+                footercredit:result[0]['footer_credit']
+            });
+        })
+    }
+
     render() {
         return (
             <Fragment>
@@ -17,13 +47,13 @@ class Footer extends Component {
                         <Col lg={3} md={6} sm={12} className="p-5 text-center">
                             <h2 className="footerName">Follow Us</h2>
                             <div className="social-container">
-                                <a className="facebook social" href="#" >
+                                <a className="facebook social" href={this.state.facebook} >
                                     <FontAwesomeIcon icon={faFacebook} size="2x" />
                                 </a>
-                                <a className="youtube social" href="#" >
+                                <a className="youtube social" href={this.state.youtube} >
                                     <FontAwesomeIcon icon={faYoutube} size="2x" />
                                 </a>
-                                <a className="twitter social" href="#" >
+                                <a className="twitter social" href={this.state.twitter} >
                                     <FontAwesomeIcon icon={faTwitter} size="2x" />
                                 </a>
                             </div>
@@ -31,9 +61,9 @@ class Footer extends Component {
                         <Col lg={3} md={6} sm={12} className="p-5 text-justify">
                             <h2 className="footerName">Address</h2>
                             <p className="footerDescription">
-                                47A Galloway Street, Hamilton East, Hamilton 3216, NZ<br></br>
-                                <FontAwesomeIcon icon={faEnvelope} /> Email : justin.tys@hotmail.com<br></br>
-                                <FontAwesomeIcon icon={faPhone} /> Phone : +64 20 4134 6305<br></br>
+                                {this.state.address}<br></br>
+                                <FontAwesomeIcon icon={faEnvelope} /> Email : {this.state.email}<br></br>
+                                <FontAwesomeIcon icon={faPhone} /> Phone : {this.state.phone}<br></br>
 
                             </p>
                         </Col>
@@ -53,7 +83,7 @@ class Footer extends Component {
                 </Container>
 
                 <Container fluid={true} className="copyrightSection">
-                    <a className="copyrightLink" href="#">&copy; Copyright 2021 by Justin. All Rights Reserved.</a>
+                    <a className="copyrightLink" href="#">&copy; {this.state.footercredit}</a>
                 </Container>
             </Fragment>
         )
