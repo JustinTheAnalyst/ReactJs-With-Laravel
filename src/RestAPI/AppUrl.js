@@ -24,7 +24,7 @@ class AppUrl {
 
     static ContactSend = this.BaseURL+'/contactsend';
 
-    static ClientView = this.BaseURL+'/clientview';
+    static ClientView = this.BaseURL+'/clientreview';
 
     static ChartData = this.BaseURL+'/chartdata';
 }

@@ -223,6 +223,9 @@
 
 .courseImg{
     width: 100%;
+    height: 200px;
+    object-fit: cover;
+    float: left;
 }
 
 .courseViewMore{
@@ -275,8 +278,8 @@
 
 .circleImg{
     margin: 0 auto;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border: 1px solid #051b35;
     border-radius: 50%;
 }

@@ -4,8 +4,23 @@ import { Col, Container, Row } from 'react-bootstrap'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import Slider from "react-slick";
-
+import RestClient from '../../RestAPI/RestClient';
+import AppUrl from '../../RestAPI/AppUrl';
 class ClientReview extends Component {
+
+    constructor() {
+        super();
+        this.state={
+            myData:[]
+        }
+    }
+
+    componentDidMount(){
+        RestClient.GetRequest(AppUrl.ClientView).then(result=>{
+            this.setState({myData:result});
+        });
+    }
+
     render() {
 
         var settings = {
@@ -48,6 +63,21 @@ class ClientReview extends Component {
             ]
         };
 
+        const myList = this.state.myData;
+        const myView = myList.map(myList=>{
+            return <div>
+            <Row className="text-center justify-content-center">
+                <Col lg={6} md={6} sm={12}>
+                    <img className="circleImg" src={myList.client_img} />
+                    <h2 className="reviewName">{myList.client_title}</h2>
+                    <p className="reviewDescription">
+                    {myList.client_description}
+                    </p>
+                </Col>
+
+            </Row>
+        </div>
+        })
 
         return (
             <Fragment>
@@ -56,41 +86,7 @@ class ClientReview extends Component {
                     <div className="reviewBottom"></div>
                     
                     <Slider {...settings}>
-                        <div>
-                            <Row className="text-center justify-content-center">
-                                <Col lg={6} md={6} sm={12}>
-                                    <img className="circleImg" src="https://image.freepik.com/free-photo/pretty-smiling-joyfully-female-with-fair-hair-dressed-casually-looking-with-satisfaction_176420-15187.jpg" />
-                                    <h2 className="reviewName">Kazi</h2>
-                                    <p className="reviewDescription">
-                                    Hi! I'm Kazi Ariyan. I'm a web developer with a serious love for teaching I am a founder of eLe easy Learning and a passionate Web Developer, Programmer & Instructor.
-                                    </p>
-                                </Col>
-
-                            </Row>
-                        </div>
-                        <div>
-                            <Row className="text-center justify-content-center">
-                                <Col lg={6} md={6} sm={12}>
-                                    <img className="circleImg" src="https://image.freepik.com/free-photo/portrait-african-american-man_23-2149072214.jpg" />
-                                    <h2 className="reviewName">Jack Ma</h2>
-                                    <p className="reviewDescription">
-                                    Hi! I'm Kazi Ariyan. I'm a web developer with a serious love for teaching I am a founder of eLe easy Learning and a passionate Web Developer, Programmer & Instructor.
-                                    </p>
-                                </Col>
-
-                            </Row>
-                        </div>
-                        <div>
-                            <Row className="text-center justify-content-center">
-                                <Col lg={6} md={6} sm={12}>
-                                    <img className="circleImg" src="https://image.freepik.com/free-photo/beautiful-young-asian-woman-with-clean-fresh-skin-face-care-facial-treatment-cosmetology-beauty-healthy-skin-cosmetic-concept_65293-2366.jpg" />
-                                    <h2 className="reviewName">Jane Sampson</h2>
-                                    <p className="reviewDescription">
-                                    Hi! I'm Kazi Ariyan. I'm a web developer with a serious love for teaching I am a founder of eLe easy Learning and a passionate Web Developer, Programmer & Instructor.
-                                    </p>
-                                </Col>
-                            </Row>
-                        </div>
+                        {myView}
                     </Slider>
                 </Container>
             </Fragment>
