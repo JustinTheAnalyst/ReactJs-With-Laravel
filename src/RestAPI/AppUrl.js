@@ -8,10 +8,11 @@ class AppUrl {
     static TotalHomeDetails = this.BaseURL+'/totalhome';
     static HomeVideo = this.BaseURL+'/home/video';
 
-    static ProjectDetails = this.BaseURL+'/projectdetails';
+    static ProjectDetails = this.BaseURL+'/projectdetails/';
     static ProjectAll = this.BaseURL+'/projects';
     static ProjectHome = this.BaseURL+'/recent3rojects';
-
+    static ProjectActive = this.BaseURL+'/activeprojects';
+    
     static Services = this.BaseURL+'/services';
 
     static Information = this.BaseURL+'/information';

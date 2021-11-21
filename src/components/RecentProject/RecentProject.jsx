@@ -30,7 +30,7 @@ class RecentProject extends Component {
                     <Card.Text className="serviceDescription">
                     {myList.project_description}
                     </Card.Text>
-                    <Button variant="primary"><Link className="link-style" to="/project-details">View More</Link></Button>
+                    <Button variant="primary"><Link className="link-style" to={"/project-details/"+myList.id}>View More</Link></Button>
                 </Card.Body>
             </Card>
         </Col>

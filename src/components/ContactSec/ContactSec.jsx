@@ -6,6 +6,7 @@ import {faEnvelope} from '@fortawesome/free-solid-svg-icons'
 import {faPhone} from '@fortawesome/free-solid-svg-icons'
 import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
+import ecommerceIcon from '../../asset/image/ecommerce.png';
 
 class ContactSec extends Component {
 
@@ -28,43 +29,84 @@ class ContactSec extends Component {
         })
     }
 
+    submitContactForm(){
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+        let message = document.getElementById('message').value;
+        let jsonObject = {name:name, email:email, message:message}
+
+        RestClient.PostRequest(AppUrl.ContactSend, JSON.stringify(jsonObject)
+        ).then(result => {
+            alert(result);
+        }).catch(error=>{
+            alert("Error");
+        })
+    }
+
     render() {
         return (
             <Fragment>
-                <Container className="mt-5">
+                <Container className="text-center">
+                    <h1 className="serviceMainTitle">Discuss with Us</h1>
+                    <div className="bottom"></div>
                     <Row>
-                        <Col lg={6} md={6} sm={12}>
-                            <h1 className="serviceName">Quick Connect</h1>
+                        <Col lg={4} md={6} sm={12} className="mb-3">
+                            <div className="serviceCard text-center">
+                                <img className="icon" src="https://image.freepik.com/free-vector/home-icon-pin-deal-isolated-white_1284-48167.jpg" />
+                                <h2 className="serviceName">Our Location</h2>
+                                <p className="serviceDescription">
+                                    {this.state.address}
+                                </p>
+                            </div>
+                        </Col>
+
+                        <Col lg={4} md={6} sm={12} className="mb-3">
+                            <div className="serviceCard text-center">
+                                <img className="icon" src="https://image.freepik.com/free-vector/illustration-envelope_53876-5849.jpg" />
+                                <h2 className="serviceName">Email Address</h2>
+                                <p className="serviceDescription">
+                                    {this.state.email}
+                                </p>
+                            </div>
+                        </Col>
+
+                        <Col lg={4} md={6} sm={12} className="mb-3">
+                            <div className="serviceCard text-center">
+                                <img className="icon" src="https://image.flaticon.com/icons/png/128/1112/1112490.png" />
+                                <h2 className="serviceName">Phone No.</h2>
+                                <p className="serviceDescription">
+                                    {this.state.phone}
+                                </p>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+
+                <Container>
+                    <Row style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                        <Col lg={6} md={12} sm={12}>
+                            <h1 className="serviceMainTitle text-center">Quick Connect</h1>
+                            <div className="bottom"></div>
                             <Form>
-                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Group>
                                     <Form.Label>Your Name</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter Your Name" />
+                                    <Form.Control id="name" type="text" placeholder="Enter Your Name" />
                                 </Form.Group>
 
-                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Group>
                                     <Form.Label>Your Email</Form.Label>
-                                    <Form.Control type="email" placeholder="Enter Your Email" />
+                                    <Form.Control id="email" type="email" placeholder="Enter Your Email" />
                                 </Form.Group>
 
-                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Group>
                                     <Form.Label>Message</Form.Label>
-                                    <Form.Control as="textarea" rows={3} />
+                                    <Form.Control id="message" as="textarea" rows={3} />
                                 </Form.Group>
 
-                                <Button variant="primary" type="submit">
+                                <Button className="float-right" variant="primary" onClick={this.submitContactForm}>
                                     Submit
                                 </Button>
                             </Form>
-                        </Col>
-
-                        <Col lg={6} md={6} sm={12}>
-                            <h1>Discuss with Us</h1>
-                            <p className="serviceDescription">
-                                {this.state.address}<br></br>
-                                <FontAwesomeIcon icon={faEnvelope} /> Email : {this.state.email}<br></br>
-                                <FontAwesomeIcon icon={faPhone} /> Phone : {this.state.phone}<br></br>
-
-                            </p>
                         </Col>
                     </Row>
                 </Container>

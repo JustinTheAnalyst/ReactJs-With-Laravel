@@ -29,7 +29,7 @@ class AppRouter extends Component {
                     <Route exact path="/terms-and-conditions" component={TermsAndConditionsPage} />
                     <Route exact path="/private-policy" component={PrivatePolicyPage} />
 
-                    <Route exact path="/project-details" component={ProjectDetailsPage} />
+                    <Route exact path="/project-details/:projectID" component={ProjectDetailsPage} />
                     <Route exact path="/course-details" component={CourseDetailsPage} />
                 </Switch>
             </Fragment>

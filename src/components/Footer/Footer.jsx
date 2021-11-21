@@ -62,7 +62,7 @@ class Footer extends Component {
                             <h2 className="footerName">Address</h2>
                             <p className="footerDescription">
                                 {this.state.address}<br></br>
-                                <FontAwesomeIcon icon={faEnvelope} /> Email : {this.state.email}<br></br>
+                                <FontAwesomeIcon icon={faEnvelope} /> {this.state.email}<br></br>
                                 <FontAwesomeIcon icon={faPhone} /> Phone : {this.state.phone}<br></br>
 
                             </p>

@@ -6,6 +6,13 @@ import TopNavigation from '../components/TopNavigation/TopNavigation'
 
 class ProjectDetailsPage extends Component {
     
+    constructor({match}){
+        super();
+        this.state = {
+            projectPassedID:match.params.projectID
+        }
+    }
+
     componentDidMount() {
         window.scroll(0,0)
     }
@@ -15,7 +22,7 @@ class ProjectDetailsPage extends Component {
             <Fragment>
                 <TopNavigation title="Project Details" />
                 <PageTop pageTitle="Project Details" />
-                <ProjectDetails />
+                <ProjectDetails pid={this.state.projectPassedID} />
                 <Footer />
             </Fragment>
         )
